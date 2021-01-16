@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- pressed state -->
+    <item android:state_pressed="true">
+        <inset android:insetLeft="4dp" android:insetTop="6dp" android:insetRight="4dp" android:insetBottom="6dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="2dp" />
+                <solid android:color="@color/primary_dark" />
+                <padding android:bottom="4dp" android:left="8dp" android:right="8dp" android:top="4dp" />
+            </shape>
+        </inset>
+    </item>
+
+    <!-- focused state -->
+    <item android:state_focused="true">
+        <inset android:insetLeft="4dp" android:insetTop="6dp" android:insetRight="4dp" android:insetBottom="6dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="2dp" />
+                <solid android:color="@color/primary_dark" />
+                <padding android:bottom="4dp" android:left="8dp" android:right="8dp" android:top="4dp" />
+            </shape>
+        </inset>
+    </item>
+
+    <!-- disabled state -->
+    <item android:state_enabled="false">
+        <inset android:insetLeft="4dp" android:insetTop="6dp" android:insetRight="4dp" android:insetBottom="6dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="2dp" />
+                <solid android:color="@color/grey_light" />
+                <padding android:bottom="4dp" android:left="8dp" android:right="8dp" android:top="4dp" />
+            </shape>
+        </inset>
+    </item>
+
+    <!-- normal state -->
+    <item>
+        <inset android:insetLeft="4dp" android:insetTop="6dp" android:insetRight="4dp" android:insetBottom="6dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="2dp" />
+                <solid android:color="@color/primary" />
+                <padding android:bottom="4dp" android:left="8dp" android:right="8dp" android:top="4dp" />
+            </shape>
+        </inset>
+    </item>
+
+</selector>

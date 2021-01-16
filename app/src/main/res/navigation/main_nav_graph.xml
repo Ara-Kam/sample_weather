@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/weekForecastFragment">
+
+    <fragment
+        android:id="@+id/weekForecastFragment"
+        android:name="com.example.weather.ui.WeekForecastFragment"
+        android:label="WeekForecastFragment"
+        tools:layout="@layout/fragment_week_forecast">
+        <action
+            android:id="@+id/action_weekForecastFragment_to_weekDayForecastFragment"
+            app:destination="@id/weekDayForecastFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weekDayForecastFragment"
+        android:name="com.example.weather.ui.WeekDayForecastFragment"
+        android:label="WeekDayForecastFragment"
+        tools:layout="@layout/fragment_week_day_forecast" />
+</navigation>
