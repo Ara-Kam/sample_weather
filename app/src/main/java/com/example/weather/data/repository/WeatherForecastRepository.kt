@@ -11,7 +11,6 @@ class WeatherForecastRepository @Inject constructor(
     fun getWeekForecast() = FetchDataStrategy.fetchWeekForecastData(
         databaseQuery = { weekForecastDao.getWeeklyForecast() },
         networkCall = { weatherRemoteData.getRemoteWeekForecast() },
-        deleteLocalDb = {weekForecastDao.deleteAll()},
         getAnyFromDb = {weekForecastDao.getAnyRow()},
         saveCallResult = { weekForecastDao.insertAll(it) }
     )

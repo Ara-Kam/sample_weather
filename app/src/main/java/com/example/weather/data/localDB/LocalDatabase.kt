@@ -11,7 +11,7 @@ import com.example.weather.utils.room_converters.Converters
 @TypeConverters(Converters::class)
 @Database(
     entities = [WeekForecast::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 

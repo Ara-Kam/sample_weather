@@ -11,7 +11,6 @@ class FetchDataStrategy {
         fun <T, A> fetchWeekForecastData(
             databaseQuery: () -> LiveData<T>,
             networkCall: suspend () -> RemoteDataWrapper<A>,
-            deleteLocalDb: suspend () -> Unit,
             getAnyFromDb: suspend () -> List<*>,
             saveCallResult: suspend (A) -> Unit,
         ): LiveData<RemoteDataWrapper<T>> =
@@ -21,7 +20,6 @@ class FetchDataStrategy {
                 val remoteResponseStatus = networkCall.invoke()
                 if (remoteResponseStatus.status == RemoteDataWrapper.Status.SUCCESS) {
                     // Rewrite a new data in DB.
-                    deleteLocalDb.invoke()
                     saveCallResult(remoteResponseStatus.data!!)
 
                     emitSource(databaseQuery.invoke().map { RemoteDataWrapper.success(it) })

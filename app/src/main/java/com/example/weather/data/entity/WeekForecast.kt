@@ -8,7 +8,7 @@ import java.io.Serializable
 
 @Entity(tableName = "WeekForecast")
 data class WeekForecast(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = false) val id: Int,
     val lat: Float,
     val lon: Float,
     val timezone: String,
