@@ -12,7 +12,7 @@ import com.example.weather.utils.room_converters.Converters
 @Database(
     entities = [WeekForecast::class],
     version = 2,
-    exportSchema = false
+    exportSchema = true
 )
 
 abstract class LocalDatabase : RoomDatabase() {

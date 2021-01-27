@@ -25,6 +25,12 @@ android {
         buildConfigField("String", "BASE_URL", apiKeyProperties['BASE_URL'])
         buildConfigField("String", "ICON_BASE_URL", apiKeyProperties['ICON_BASE_URL'])
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,6 +50,9 @@ android {
     }
     buildFeatures {
         viewBinding true
+    }
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
 }
 

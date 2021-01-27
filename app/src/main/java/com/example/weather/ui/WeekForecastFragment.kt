@@ -51,7 +51,7 @@ class WeekForecastFragment : Fragment() {
         interval = 10000
         fastestInterval = 5000
         priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
-        numUpdates = 2
+        numUpdates = 1
     }
 
     override fun onCreateView(
