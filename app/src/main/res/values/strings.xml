@@ -4,4 +4,6 @@
     <string name="chance_of_precip">chance of precipitation</string>
     <string name="humidity">Humidity</string>
     <string name="check_connection">\nCheck your internet connection and try again.</string>
+    <string name="daily_forecast_icon">Daily forecast icon</string>
+    <string name="week_day_forecast_icon">Week day forecast icon</string>
 </resources>

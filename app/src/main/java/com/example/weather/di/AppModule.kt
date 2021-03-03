@@ -11,20 +11,18 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
     fun provideGson(): Gson = GsonBuilder().create()
 
-    @Singleton
     @Provides
     fun provideRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
@@ -39,7 +37,6 @@ object AppModule {
     fun provideFusedLocationProviderClient(@ApplicationContext appContext: Context) =
         LocationServices.getFusedLocationProviderClient(appContext)
 
-    @Singleton
     @Provides
     fun provideWeekForecastDao(localDatabase: LocalDatabase) = localDatabase.dailyForecastDao()
 
@@ -47,7 +44,6 @@ object AppModule {
     fun provideWeatherService(retrofit: Retrofit): WeatherService =
         retrofit.create(WeatherService::class.java)
 
-    @Singleton
     @Provides
     fun providePreferences(@ApplicationContext appContext: Context) =
         PreferenceProvider(appContext)

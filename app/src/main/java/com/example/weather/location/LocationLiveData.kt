@@ -27,6 +27,7 @@ class LocationLiveData(context: Context) : LiveData<MyLocationModel>() {
         startLocationUpdates()
     }
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     @SuppressLint("MissingPermission")
     private fun startLocationUpdates() {
         mFusedLocationClient.requestLocationUpdates(
@@ -39,9 +40,8 @@ class LocationLiveData(context: Context) : LiveData<MyLocationModel>() {
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult?) {
             locationResult ?: return
-            for (location in locationResult.locations) {
-                setLocationData(location)
-            }
+            val location = locationResult.locations.last()
+            setLocationData(location)
         }
     }
 

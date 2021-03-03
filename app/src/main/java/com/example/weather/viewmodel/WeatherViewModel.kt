@@ -1,15 +1,17 @@
 package com.example.weather.viewmodel
 
 import android.app.Application
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.weather.data.entity.DailyForecast
 import com.example.weather.data.entity.WeekForecast
 import com.example.weather.data.repository.WeatherForecastRepository
 import com.example.weather.data.util.RemoteDataWrapper
 import com.example.weather.location.LocationLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class WeatherViewModel @ViewModelInject constructor(
+@HiltViewModel
+class WeatherViewModel @Inject constructor(
     var repository: WeatherForecastRepository,
     application: Application
 ) : AndroidViewModel(application) {

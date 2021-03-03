@@ -2,6 +2,7 @@ package com.example.weather.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.example.weather.databinding.ActivityMainBinding
@@ -17,9 +18,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mViewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mViewBinding.root)
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
+            mOnActivityResult(
+                REQUEST_CHECK_SETTINGS,
+                activityResult.resultCode,
+                activityResult.data
+            )
+        }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    private fun mOnActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CHECK_SETTINGS) {
             val hostFragment: NavHostFragment =
                 supportFragmentManager.findFragmentById(com.example.weather.R.id.nav_host_fragment) as NavHostFragment?
@@ -29,8 +37,6 @@ class MainActivity : AppCompatActivity() {
                 resultCode,
                 data
             )
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
         }
     }
 }

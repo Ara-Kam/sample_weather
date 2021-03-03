@@ -122,7 +122,6 @@ class WeekForecastFragment : Fragment() {
         if (!mWeatherViewModel.isLocationFetched) {
             getLastKnownLocation()
         }
-
     }
 
     override fun onDestroyView() {
@@ -170,7 +169,7 @@ class WeekForecastFragment : Fragment() {
                 try {
                     // Handle result in onActivityResult()
                     it.startResolutionForResult(
-                        activity,
+                        requireActivity(),
                         REQUEST_CHECK_SETTINGS
                     )
                 } catch (sendEx: IntentSender.SendIntentException) {
