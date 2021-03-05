@@ -5,5 +5,4 @@ data class FeelsLike(
     val night: Float,
     val eve: Float,
     val morn: Float
-) {
-}
+)

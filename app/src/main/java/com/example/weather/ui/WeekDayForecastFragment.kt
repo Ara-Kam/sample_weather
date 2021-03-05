@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.weather.BuildConfig
 import com.example.weather.R
 import com.example.weather.data.sharedprefs.PreferenceProvider
@@ -43,7 +42,7 @@ class WeekDayForecastFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mWeatherViewModel.getSelectedWeekDayForecast().observe(viewLifecycleOwner, {
             with(mWeekDayForecastBinding) {
-                date.text = DateConverter.getDateTime(it.dt.toString())
+                date.text = DateConverter.getDateTime(it.dt)
                 ("Day " + it.temp.day.roundToInt()
                     .toString() + mSharedPrefs.getTemperatureUnit()).also {
                     tempDay.text = it

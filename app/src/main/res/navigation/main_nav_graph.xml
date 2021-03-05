@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/weekForecastFragment">
+    app:startDestination="@id/citiesForecastFragment">
 
     <fragment
         android:id="@+id/weekForecastFragment"
@@ -13,10 +13,21 @@
         <action
             android:id="@+id/action_weekForecastFragment_to_weekDayForecastFragment"
             app:destination="@id/weekDayForecastFragment" />
+        <argument
+            android:name="location"
+            app:argType="com.example.weather.location.MyLocationModel" />
     </fragment>
     <fragment
         android:id="@+id/weekDayForecastFragment"
         android:name="com.example.weather.ui.WeekDayForecastFragment"
         android:label="WeekDayForecastFragment"
         tools:layout="@layout/fragment_week_day_forecast" />
+    <fragment
+        android:id="@+id/citiesForecastFragment"
+        android:name="com.example.weather.ui.CitiesForecastFragment"
+        android:label="CitiesForecastFragment">
+        <action
+            android:id="@+id/action_citiesForecastFragment_to_weekForecastFragment"
+            app:destination="@id/weekForecastFragment" />
+    </fragment>
 </navigation>

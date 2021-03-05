@@ -3,9 +3,9 @@ package com.example.weather.data.util
 import retrofit2.Response
 
 abstract class RemoteData {
-    protected suspend fun <T> getRemoteData(call: suspend () -> Response<T>): RemoteDataWrapper<T> {
+    protected suspend fun <T> getRemoteData(call: suspend () -> Response<T>?): RemoteDataWrapper<T> {
         try {
-            val response = call()
+            val response = call() ?: throw Exception()
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) return RemoteDataWrapper.success(body)

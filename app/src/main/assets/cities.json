@@ -1,0 +1,132 @@
+[
+  {
+    "id": 524901,
+    "name": "Moscow",
+    "state": "",
+    "country": "RU",
+    "coord": {
+      "lon": 37.615555,
+      "lat": 55.75222
+    }
+  },
+  {
+    "id": 498817,
+    "name": "Saint Petersburg",
+    "state": "",
+    "country": "RU",
+    "coord": {
+      "lon": 30.264168,
+      "lat": 59.894444
+    }
+  },
+  {
+    "id": 554234,
+    "name": "Kaliningrad",
+    "state": "",
+    "country": "RU",
+    "coord": {
+      "lon": 20.51095,
+      "lat": 54.70649
+    }
+  },
+  {
+    "id": 703448,
+    "name": "Kyiv",
+    "state": "",
+    "country": "UA",
+    "coord": {
+      "lon": 30.516666,
+      "lat": 50.433334
+    }
+  },
+  {
+    "id": 625144,
+    "name": "Minsk",
+    "state": "",
+    "country": "BY",
+    "coord": {
+      "lon": 27.566668,
+      "lat": 53.900002
+    }
+  },
+  {
+    "id": 4140963,
+    "name": "Washington, D.C.",
+    "state": "DC",
+    "country": "US",
+    "coord": {
+      "lon": -77.036369,
+      "lat": 38.895111
+    }
+  },
+  {
+    "id": 5368361,
+    "name": "Los Angeles",
+    "state": "CA",
+    "country": "US",
+    "coord": {
+      "lon": -118.243683,
+      "lat": 34.052231
+    }
+  },
+  {
+    "id": 5128581,
+    "name": "New York City",
+    "state": "NY",
+    "country": "US",
+    "coord": {
+      "lon": -74.005966,
+      "lat": 40.714272
+    }
+  },
+  {
+    "id": 2950159,
+    "name": "Berlin",
+    "state": "",
+    "country": "DE",
+    "coord": {
+      "lon": 13.41053,
+      "lat": 52.524368
+    }
+  },
+  {
+    "id": 2643743,
+    "name": "London",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -0.12574,
+      "lat": 51.50853
+    }
+  },
+  {
+    "id": 2988506,
+    "name": "Paris",
+    "state": "",
+    "country": "FR",
+    "coord": {
+      "lon": 2.34864,
+      "lat": 48.85339
+    }
+  },
+  {
+    "id": 3169070,
+    "name": "Rome",
+    "state": "",
+    "country": "IT",
+    "coord": {
+      "lon": 12.4839,
+      "lat": 41.894741
+    }
+  },
+  {
+    "id": 1819730,
+    "name": "Hong Kong Special Administrative Region",
+    "state": "",
+    "country": "HK",
+    "coord": {
+      "lon": 114.166672,
+      "lat": 22.25
+    }
+  }
+]

@@ -1,19 +1,21 @@
 package com.example.weather.data.repository
 
-import com.example.weather.data.localDB.WeekForecastDao
+import com.example.weather.data.localDB.CurrentForecastDao
 import com.example.weather.data.util.FetchDataStrategy
 import javax.inject.Inject
 
 class WeatherForecastRepository @Inject constructor(
-    private val weekForecastDao: WeekForecastDao,
+    private val currentForecastDao: CurrentForecastDao,
     private val weatherRemoteData: WeekForecastRemoteData,
 ) {
-    fun getWeekForecast() = FetchDataStrategy.fetchWeekForecastData(
-        databaseQuery = { weekForecastDao.getWeeklyForecast() },
-        networkCall = { weatherRemoteData.getRemoteWeekForecast() },
-        getAnyFromDb = {weekForecastDao.getAnyRow()},
-        saveCallResult = { weekForecastDao.insertAll(it) }
+    fun getWeekForecast(lat: Double, lon: Double) = FetchDataStrategy.fetchWeekForecastData(
+        networkCall = { weatherRemoteData.getRemoteWeekForecast(lat, lon) }
     )
 
-    fun getWeekForecastRemoteDataObj() = weatherRemoteData
+    fun getCurrentForecast() = FetchDataStrategy.fetchCurrentForecastData(
+        databaseQuery = { currentForecastDao.getCurrentForecast() },
+        networkCall = { weatherRemoteData.getCurrentForecast() },
+        getAnyFromDb = { currentForecastDao.getAnyRow() },
+        saveCallResult = { currentForecastDao.insert(it) }
+    )
 }

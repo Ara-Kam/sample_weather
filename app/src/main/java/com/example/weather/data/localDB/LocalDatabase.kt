@@ -10,13 +10,14 @@ import com.example.weather.utils.room_converters.Converters
 
 @TypeConverters(Converters::class)
 @Database(
-    entities = [WeekForecast::class],
-    version = 2,
+    entities = [CurrentForecast::class, CityForecast::class],
+    version = 3,
     exportSchema = true
 )
 
 abstract class LocalDatabase : RoomDatabase() {
-    abstract fun dailyForecastDao(): WeekForecastDao
+    abstract fun currentForecastDao(): CurrentForecastDao
+    abstract fun citiesForecastDao(): CitiesForecastDao
 
     companion object {
         @Volatile
@@ -30,7 +31,7 @@ abstract class LocalDatabase : RoomDatabase() {
             }
 
         private fun buildDatabase(appContext: Context) =
-            Room.databaseBuilder(appContext, LocalDatabase::class.java, "WeekForecastDB")
+            Room.databaseBuilder(appContext, LocalDatabase::class.java, "WeatherForecastDB")
                 .fallbackToDestructiveMigration()
                 .build()
     }

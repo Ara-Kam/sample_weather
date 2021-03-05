@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="myBuildConfig"
+            type="com.example.weather.BuildConfig" />
+
+        <variable
+            name="viewModel"
+            type="com.example.weather.viewmodel.WeatherViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/current_location_forecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/local_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Local current weather"
+                android:textSize="@dimen/city_text_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/curr_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="@dimen/date_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/local_weather"
+                app:timestamp="@{viewModel.currentForecastResult.data.current.dt}" />
+
+            <TextView
+                android:id="@+id/week_forecast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/daily_forecast_7days"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/city_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/curr_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="@dimen/temperature_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/weather_icon"
+                app:layout_constraintTop_toBottomOf="@+id/local_weather" />
+
+            <ImageView
+                android:id="@+id/weather_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/daily_forecast_icon"
+                app:layout_constraintBottom_toTopOf="@+id/week_forecast"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/local_weather"
+                app:weatherIcon="@{myBuildConfig.ICON_BASE_URL + viewModel.currentForecastResult.data.current.weather[0].icon + `@2x.png` }" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cities_forecast_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_location_forecast" />
+
+        <include
+            android:id="@+id/loading_view"
+            layout="@layout/progress_layout"
+            android:visibility="@{viewModel.currentForecastResult.status == viewModel.currentForecastResult.status.LOADING ? View.VISIBLE : View.GONE}" />
+
+        <include
+            android:id="@+id/error_layout"
+            layout="@layout/error_layout"
+            android:visibility="@{viewModel.currentForecastResult.status == viewModel.currentForecastResult.status.ERROR ? View.VISIBLE : View.GONE}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

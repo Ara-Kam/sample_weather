@@ -38,7 +38,10 @@ object AppModule {
         LocationServices.getFusedLocationProviderClient(appContext)
 
     @Provides
-    fun provideWeekForecastDao(localDatabase: LocalDatabase) = localDatabase.dailyForecastDao()
+    fun provideWeekForecastDao(localDatabase: LocalDatabase) = localDatabase.currentForecastDao()
+
+    @Provides
+    fun provideCitiesForecastDao(localDatabase: LocalDatabase) = localDatabase.citiesForecastDao()
 
     @Provides
     fun provideWeatherService(retrofit: Retrofit): WeatherService =

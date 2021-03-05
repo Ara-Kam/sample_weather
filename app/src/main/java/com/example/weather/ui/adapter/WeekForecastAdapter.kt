@@ -35,7 +35,7 @@ class WeekForecastAdapter @Inject constructor() :
             }
 
             itemBinding.date.text =
-                DateConverter.getDateTime(dailyForecast.dt.toString())
+                DateConverter.getDateTime(dailyForecast.dt)
 
             // Set weather description(e.g. "Light rain")
             itemBinding.weatherMainDescription.text = dailyForecast.weather[0].main

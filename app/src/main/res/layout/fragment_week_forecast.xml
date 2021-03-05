@@ -1,57 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey_light">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/days_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <data>
 
-    <RelativeLayout
-        android:id="@+id/loading_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/gray_transparent"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone">
+        <import type="android.view.View" />
 
-        <ProgressBar
-            android:id="@+id/progress_wheel"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_centerInParent="true" />
+        <variable
+            name="viewModel"
+            type="com.example.weather.viewmodel.WeatherViewModel" />
+    </data>
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/error_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="36dp"
-        android:visibility="gone">
+        android:background="@color/grey_light">
 
-        <TextView
-            android:id="@+id/error_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/days_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/retry"
-            style="@style/Widget.ButtonBlue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/error_text"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="@string/retry"
-            android:textAllCaps="false" />
+        <include
+            android:id="@+id/loading_view"
+            layout="@layout/progress_layout"
+            android:visibility="@{viewModel.weekForecastResult.status == viewModel.weekForecastResult.status.LOADING ? View.VISIBLE : View.GONE}" />
 
-    </RelativeLayout>
+        <include
+            android:id="@+id/error_layout"
+            layout="@layout/error_layout"
+            android:visibility="@{viewModel.weekForecastResult.status == viewModel.weekForecastResult.status.ERROR ? View.VISIBLE : View.GONE}" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

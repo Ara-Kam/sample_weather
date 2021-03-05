@@ -7,10 +7,10 @@ import java.util.*
 class DateConverter {
     companion object{
         @SuppressLint("SimpleDateFormat")
-        fun getDateTime(s: String): String? {
+        fun getDateTime(timeStamp: Long): String {
             return try {
                 val sdf = SimpleDateFormat("EE, MMM d")
-                val netDate = Date(s.toLong() * 1000)
+                val netDate = Date(timeStamp * 1000)
                 sdf.format(netDate)
             } catch (e: Exception) {
                 e.toString()
